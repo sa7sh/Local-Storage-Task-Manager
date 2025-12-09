@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LocalStorage Task Manager</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-database"></i> Local Storage Task Manager</h1>
+            <p class="subtitle">Your tasks are saved in your browser's localStorage and will persist across sessions.</p>
+        </header>
+        
+        <div class="storage-info">
+            <h3><i class="fas fa-info-circle"></i> About LocalStorage</h3>
+            <p>Local Storage is a web storage API that allows you to store key-value pairs in the browser with no expiration time. The data persists even after the browser is closed and reopened.</p>
+            <div class="storage-details">
+                <p><strong>Current usage:</strong> <span id="storageUsage">0 bytes</span></p>
+                <p><strong>Maximum capacity:</strong> Approximately 5MB</p>
+            </div>
+        </div>
+        
+        <div class="input-group">
+                <input type="text" id="taskInput" placeholder="Enter a new task...">
+                <div class="priority-selector">
+                    <label for="prioritySelect">Priority:</label>
+                    <select id="prioritySelect">
+                        <option value="low">Low</option>
+                        <option value="medium" selected>Medium</option>
+                        <option value="high">High</option>
+                    </select>
+                </div>
+            </div>
+        <div class="input-section">
+          <div class="priority-selector">
+                    <label for="prioritySelect">Priority:</label>
+                    <select id="prioritySelect">
+                        <option value="low">Low</option>
+                        <option value="medium" selected>Medium</option>
+                        <option value="high">High</option>
+                    </select>
+                </div>
+            <div class="task-filters">
+            <button class="filter-btn active" data-filter="all">All Tasks</button>
+            <button class="filter-btn" data-filter="pending">Pending</button>
+            <button class="filter-btn" data-filter="completed">Completed</button>
+            <button class="filter-btn" data-filter="high">High Priority</button>
+        </div>
+            <button id="addTaskBtn" class="btn-primary">
+                <i class="fas fa-plus"></i> Add Task
+            </button>
+        </div>
+        
+        
+        
+        <div class="task-list" id="taskList">
+            <!-- Tasks will be dynamically added here -->
+        </div>
+        
+        <div class="empty-state" id="emptyState">
+            <i class="fas fa-tasks fa-4x"></i>
+            <h3>No tasks yet</h3>
+            <p>Add a task using the form above. It will be saved in your browser's localStorage.</p>
+        </div>
+        
+        <div class="controls">
+            <button id="clearCompletedBtn" class="btn-secondary">
+                <i class="fas fa-check-double"></i> Clear Completed
+            </button>
+            <button id="clearStorageBtn" class="btn-danger">
+                <i class="fas fa-trash-alt"></i> Clear All Tasks & Storage
+            </button>
+            <div class="stats">
+                <div class="stat-item">
+                    <span class="stat-label">Total Tasks:</span>
+                    <span id="totalTasks" class="stat-value">0</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Completed:</span>
+                    <span id="completedTasks" class="stat-value">0</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Pending:</span>
+                    <span id="pendingTasks" class="stat-value">0</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="localstorage-demo">
+            <h3><i class="fas fa-code"></i> LocalStorage Demo</h3>
+            <div class="demo-controls">
+                <input type="text" id="demoKey" placeholder="Key">
+                <input type="text" id="demoValue" placeholder="Value">
+                <button id="saveDemoBtn" class="btn-small">Save to localStorage</button>
+                <button id="getDemoBtn" class="btn-small">Get from localStorage</button>
+                <button id="removeDemoBtn" class="btn-small">Remove Key</button>
+            </div>
+            <div id="demoOutput" class="demo-output">
+                <!-- Demo output will appear here -->
+            </div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
